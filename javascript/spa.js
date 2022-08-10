@@ -14,7 +14,6 @@ const pageSelect = () => {
     });
   });
 
-
   addButton.addEventListener('click', () => {
     sections.forEach((sec, i) => {
       sec.classList.add('hidden');
@@ -23,6 +22,6 @@ const pageSelect = () => {
     sections[0].classList.remove('hidden');
     navs[0].classList.add('active');
   });
-}
+};
 
 export default pageSelect;
