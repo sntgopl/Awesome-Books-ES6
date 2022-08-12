@@ -3,4 +3,6 @@ import pageSelect from './javascript/spa.js';
 import showDate from './javascript/date.js';
 
 pageSelect();
-showDate();
+
+const dateTime = new Date(Date.now());
+date.innherhtml = dateTime.toUTCString();
