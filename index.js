@@ -6,5 +6,4 @@ pageSelect();
 
 const date = document.querySelector('#date');
 
-const dateTime = new Date(Date.now());
 date.textContent = dateTime.toUTCString();
