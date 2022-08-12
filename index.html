@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Libr</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
     <nav>
@@ -21,7 +22,7 @@
         <h1>Awesome Books</h1>
         <ul id="listOfBooks"></ul>
       </section>
-      <span id="date"></span>
+      <span id="date">asdfasdf</span>
       <section id="sec2" class="hidden">
         <form action="#">
           <h2>Add a Book</h2>
@@ -34,21 +35,25 @@
         </form>
       </section>
       <section id="sec3" class="hidden">
-          <h2>Contact information</h2>
-          <p>Do you have any questions or you just want to say "Hello"!
-            <br>
-            You can reach out to us!.
-          </p>
-          <ul>
-            <li>Our e-mail: example@google.com</li>
-            <li>Our phone number: +102930940340</li>
-            <li>Our address: street name 22, 8498 City, Country</li>
-          </ul>
+        <h2>Contact information</h2>
+        <p>
+          Do you have any questions or you just want to say "Hello"!
+          <br />
+          You can reach out to us!.
+        </p>
+        <ul>
+          <li>Our e-mail: example@google.com</li>
+          <li>Our phone number: +102930940340</li>
+          <li>Our address: street name 22, 8498 City, Country</li>
+        </ul>
       </section>
     </main>
     <footer>
-      <p>Copyrights  <span>...</span> </p>
+      <p>Copyrights <span>...</span></p>
     </footer>
-    <script type="module" src="./index.js"></script>
+    <script src="./Modules/books.js" type="module"></script>
+    <script src="./Modules/spa.js" type="module"></script>
+    <script src="./Modules/selectors.js" type="module"></script>
+    <script src="./index.js" type="module"></script>
   </body>
 </html>

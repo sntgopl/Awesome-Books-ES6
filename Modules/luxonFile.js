@@ -238,10 +238,10 @@ const DATETIME_HUGE_WITH_SECONDS = {
 };
 
 /*
-     This is just a junk drawer, containing anything used across multiple classes.
-     Because Luxon is small(ish), this should stay small and we won't worry about splitting
-     it up into, say, parsingUtil.js and basicUtil.js and so on. But they are divided up by feature area.
-   */
+      This is just a junk drawer, containing anything used across multiple classes.
+      Because Luxon is small(ish), this should stay small and we won't worry about splitting
+      it up into, say, parsingUtil.js and basicUtil.js and so on. But they are divided up by feature area.
+    */
 
 /**
  * @private
@@ -6595,11 +6595,11 @@ class DateTime {
   }
 
   /**
-      * Subtract a period of time to this DateTime and return the resulting DateTime
-      * See {@link DateTime#plus}
-      * @param {Duration|Object|number} duration - The amount to subtract. Either a Luxon Duration, a number of milliseconds, the object argument to Duration.fromObject()
-      @return {DateTime}
-      */
+       * Subtract a period of time to this DateTime and return the resulting DateTime
+       * See {@link DateTime#plus}
+       * @param {Duration|Object|number} duration - The amount to subtract. Either a Luxon Duration, a number of milliseconds, the object argument to Duration.fromObject()
+       @return {DateTime}
+       */
   minus(duration) {
     if (!this.isValid) return this;
     const dur = Duration.fromDurationLike(duration).negate();

@@ -1,9 +1,69 @@
-import './javascript/book.js';
-import pageSelect from './javascript/spa.js';
-import dateTime from './javascript/luxon.js';
+import {
+  booklist,
+  addBook,
+  bookTitle,
+  bookAuthor,
+} from './Modules/selectors.js';
 
-pageSelect();
+export function updateLocalStorage(data) {
+  localStorage.setItem('data', JSON.stringify(data));
+}
 
-const date = document.querySelector('#date');
+let booksArray;
+/* eslint max-classes-per-file: ["error", 2] */
+export class BooksArray extends Array {
+  static get() {
+    return Array;
+  }
 
-date.textContent = dateTime.toUTCString();
+  removeBook(id) {
+    booksArray = this.filter((ele, index) => index !== id);
+  }
+}
+export default class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
+
+  pushBook() {
+    booksArray.push(this);
+  }
+}
+
+booksArray = new BooksArray(
+  ...(JSON.parse(localStorage.getItem('data')) || []),
+);
+
+export const addUI = () => {
+  updateLocalStorage(booksArray);
+  booklist.innerHTML = booksArray
+    .map(
+      (ele) => `<li>
+                       <p>'${ele.title}' by ${ele.author}</p>
+                       <button class="card-remove-button" >Remove</button>
+                      </li>`,
+    )
+    .join('');
+  const removeBtn = document.querySelectorAll('.card-remove-button');
+  removeBtn.forEach((button, index) => button.addEventListener('click', () => {
+    Book.removeUI(index);
+  }));
+};
+
+addUI();
+
+/* eslint-disable */
+export const removeUI = (id) => {
+  booksArray.removeBook(id);
+  addUI();
+};
+
+addBook.addEventListener('click', (e) => {
+  e.preventDefault();
+  const bookObj = new Book(bookTitle.value, bookAuthor.value);
+  bookObj.pushBook();
+  addUI();
+  bookTitle.value = '';
+  bookAuthor.value = '';
+});

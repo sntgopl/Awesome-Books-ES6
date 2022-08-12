@@ -29,6 +29,6 @@
     "stylelint-scss": "^3.21.0"
   },
   "dependencies": {
-    "luxon": "^3.0.1"
+    "jquery": "^3.6.0"
   }
 }
