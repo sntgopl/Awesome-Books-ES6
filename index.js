@@ -1,8 +1,8 @@
 import './javascript/book.js';
 import pageSelect from './javascript/spa.js';
-import showDate from './javascript/date.js';
+import dateTime from './javascript/luxon.js';
 
 pageSelect();
 
 const dateTime = new Date(Date.now());
-date.innherhtml = dateTime.toUTCString();
+year.textContent = dateTime.toUTCString();
