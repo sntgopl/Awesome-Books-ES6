@@ -41,7 +41,7 @@ export const addUI = () => {
     .map(
       (ele) => `<li>
                        <p>'${ele.title}' by ${ele.author}</p>
-                       <button class="card-remove-button" >Remove</button>
+                       <button onclick="removeUI()" class="card-remove-button" >Remove</button>
                       </li>`,
     )
     .join('');

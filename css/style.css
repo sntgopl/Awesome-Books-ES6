@@ -135,6 +135,7 @@ footer {
   flex-direction: column;
   gap: 15px;
 }
+
 .card-remove-button {
   font-weight: bold;
   margin: 7px;
