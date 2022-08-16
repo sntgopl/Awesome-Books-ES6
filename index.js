@@ -1,15 +1,17 @@
-const booklist = document.querySelector('#listOfBooks');
-const bookTitle = document.querySelector('#bookTitle');
-const bookAuthor = document.querySelector('#bookAuthor');
-const addBook = document.querySelector('#addButton');
+import {
+  booklist,
+  addBook,
+  bookTitle,
+  bookAuthor,
+} from './Modules/selectors.js';
 
-function updateLocalStorage(data) {
+export function updateLocalStorage(data) {
   localStorage.setItem('data', JSON.stringify(data));
 }
 
 let booksArray;
 /* eslint max-classes-per-file: ["error", 2] */
-class BooksArray extends Array {
+export class BooksArray extends Array {
   static get() {
     return Array;
   }
@@ -18,8 +20,7 @@ class BooksArray extends Array {
     booksArray = this.filter((ele, index) => index !== id);
   }
 }
-
-class Book {
+export default class Book {
   constructor(title, author) {
     this.title = title;
     this.author = author;
@@ -30,29 +31,33 @@ class Book {
   }
 }
 
-booksArray = new BooksArray(...(JSON.parse(localStorage.getItem('data')) || []));
-
-const addUI = () => {
-  updateLocalStorage(booksArray);
-  booklist.innerHTML = booksArray
-    .map(
-      (ele, id) => `<li>
-                     <p>'${ele.title}' by ${ele.author}</p>
-                     <button type="button"
-                     onClick="removeUI(${id})">remove</button>
-                    </li>
-  `,
-    )
-    .join('');
-};
-
-addUI();
+booksArray = new BooksArray(
+  ...(JSON.parse(localStorage.getItem('data')) || []),
+);
 
 /* eslint-disable */
 const removeUI = (id) => {
   booksArray.removeBook(id);
   addUI();
 };
+
+const addUI = () => {
+  updateLocalStorage(booksArray);
+  booklist.innerHTML = booksArray
+    .map(
+      (ele) => `<li>
+    <p>'${ele.title}' by ${ele.author}</p>
+    <button onclick="removeUI" class="card-remove-button" >Remove</button>
+    </li>`,
+    )
+    .join('');
+  const removeBtn = document.querySelectorAll('.card-remove-button');
+  removeBtn.forEach((button, index) => button.addEventListener('click', () => {
+    removeUI(index);
+  }));
+};
+
+addUI();
 
 addBook.addEventListener('click', (e) => {
   e.preventDefault();
