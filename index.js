@@ -53,7 +53,7 @@ const addUI = () => {
     .join('');
   const removeBtn = document.querySelectorAll('.card-remove-button');
   removeBtn.forEach((button, index) => button.addEventListener('click', () => {
-    Book.removeUI(index);
+    removeUI(index);
   }));
 };
 
