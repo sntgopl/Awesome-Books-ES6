@@ -38,26 +38,26 @@ booksArray = new BooksArray(
 export const addUI = () => {
   updateLocalStorage(booksArray);
   booklist.innerHTML = booksArray
-    .map(
-      (ele) => `<li>
-                       <p>'${ele.title}' by ${ele.author}</p>
-                       <button onclick="removeUI()" class="card-remove-button" >Remove</button>
-                      </li>`,
+  .map(
+    (ele) => `<li>
+    <p>'${ele.title}' by ${ele.author}</p>
+    <button onclick="removeUI" class="card-remove-button" >Remove</button>
+    </li>`,
     )
     .join('');
-  const removeBtn = document.querySelectorAll('.card-remove-button');
-  removeBtn.forEach((button, index) => button.addEventListener('click', () => {
-    Book.removeUI(index);
-  }));
-};
-
-addUI();
-
-/* eslint-disable */
-export const removeUI = (id) => {
-  booksArray.removeBook(id);
+    const removeBtn = document.querySelectorAll('.card-remove-button');
+    removeBtn.forEach((button, index) => button.addEventListener('click', () => {
+      Book.removeUI(index);
+    }));
+  };
+  
   addUI();
-};
+  
+  /* eslint-disable */
+  export const removeUI = (id) => {
+    booksArray.removeBook(id);
+    addUI();
+  };
 
 addBook.addEventListener('click', (e) => {
   e.preventDefault();
