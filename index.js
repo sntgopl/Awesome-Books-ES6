@@ -35,7 +35,13 @@ booksArray = new BooksArray(
   ...(JSON.parse(localStorage.getItem('data')) || []),
 );
 
-export const addUI = () => {
+/* eslint-disable */
+const removeUI = (id) => {
+  booksArray.removeBook(id);
+  addUI();
+};
+
+const addUI = () => {
   updateLocalStorage(booksArray);
   booklist.innerHTML = booksArray
     .map(
@@ -52,12 +58,6 @@ export const addUI = () => {
 };
 
 addUI();
-
-/* eslint-disable */
-  export const removeUI = (id) => {
-    booksArray.removeBook(id);
-    addUI();
-  };
 
 addBook.addEventListener('click', (e) => {
   e.preventDefault();
